@@ -21,6 +21,9 @@ public class CardPayment extends Payment{
 	}
 	
 	public void GeneratePaymentReciept() {
-		
+
+		System.out.println("Here is the payment reciept with details");
+  	  System.out.println("Reciept number is " +7986);
+  	  System.out.println("Paid Amount:- " +amount);
 	}
 }
