@@ -17,6 +17,7 @@
 Employee emp = (Employee) request.getAttribute("employee");
 
 boolean editMode = (emp!=null) ;
+System.out.println(emp);
 
 
 %>
@@ -34,7 +35,7 @@ boolean editMode = (emp!=null) ;
      </div>
   <div class = "card-body" >
   
-  <form action="employee" method = "post">
+  <form action="EmployeeServlet" method = "post">
   
   <input type = "hidden" name = "eid" value = '<%=editMode? emp.getEid() : ""%>'>
   <div class = "mb-3">
@@ -71,14 +72,14 @@ boolean editMode = (emp!=null) ;
     <div class = "mb-3">
   
   <label class = "form-label">Employee DOJ :</label>
-  <input type = "date" class = "form-control" name = doj  value = '<%= editMode?emp.getDoj() : ""%>'>
+  <input type = "text" class = "form-control" name = doj  value = '<%= editMode?emp.getDoj() : ""%>'>
   
   </div>
   
     <div class = "mb-3">
   
   <label class = "form-label">Employee DOB :</label>
-  <input type = "date" class = "form-control" name = dob  value = '<%= editMode?emp.getDob() : ""%>'>
+  <input type = "text" class = "form-control" name = dob  value = '<%= editMode?emp.getDob() : ""%>'>
   
   </div>
   
@@ -89,7 +90,7 @@ boolean editMode = (emp!=null) ;
   
   </button>
   
-  <a href = "employee?action=list" class = "btn btn-primary">Back</a>
+  <a href = "EmployeeServlet?action=list" class = "btn btn-primary">Back</a>
   </form>
   
   </div>

@@ -22,8 +22,18 @@ List<Employee> employeeList = (List<Employee>)request.getAttribute("empList") ;
 
 
 
-<a href = "employee?action=add" class = "btn btn-success"> Add Employee</a>
+<a href = "Employee?action=add" class = "btn btn-success"> Add Employee</a>
 <a href ="Home.jsp" class = "btn btn-warning" > Home</a>
+<a class="btn btn-primary" href="EmployeeServlet?action=list">
+			View All Employees
+		</a>
+				<br>
+				<br>
+				<form class="d-flex gap-2 flex-row" action="EmployeeServlet">
+					<input type="hidden" name="action" value="search" >
+					<input type="text" class="form-control" placeholder="Enter Employee Name, Email, DOJ, DOB, Mobile to search" name="search" >
+					<button class="btn btn-dark" >Search</button>
+				</form>
 </div>
 
 <div class = "card-body">
@@ -36,6 +46,7 @@ List<Employee> employeeList = (List<Employee>)request.getAttribute("empList") ;
  <th> Employee Id</th>
  <th>Employee Name</th>
  <th>Employee Salary</th>
+ <th>Employee Email</th>
  <th>Employee Mobile</th>
  
  <th>Employee DOJ</th>
@@ -61,8 +72,10 @@ List<Employee> employeeList = (List<Employee>)request.getAttribute("empList") ;
   <td><%=emp.getDoj() %></td>
   <td><%= emp.getDob() %></td>
   <td>
-  <a href = "employee?action=edit&eid <%=emp.getEid() %>" class = "btn btn-success">Edit</a>
-  <a href = "employee?action=delete&eid<%=emp.getEid() %>" class = "btn btn-danger" onclick = "return confirm(do you want to delete the employee)">Delete</a>
+  <a href = "EmployeeServlet?action=edit&eid=<%=emp.getEid() %>" class = "btn btn-success">Edit</a>
+  <a href = "EmployeeServlet?action=delete&eid=<%=emp.getEid() %>" class = "btn btn-danger" onclick = "return confirm(do you want to delete the employee)">Delete</a>
+   <a href = "EmployeeServlet?action=info&eid=<%=emp.getEid() %>" class = "btn btn-primary sm">Info</a>
+  
   </td>
   
   </tr>
