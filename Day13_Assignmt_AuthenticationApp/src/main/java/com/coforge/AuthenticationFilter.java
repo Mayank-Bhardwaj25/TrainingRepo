@@ -18,7 +18,7 @@ import java.io.IOException;
 /**
  * Servlet Filter implementation class AuthenticationFilter
  */
-@WebFilter("/AuthenticationFilter")
+@WebFilter("/*")
 public class AuthenticationFilter extends HttpFilter implements Filter {
        
     /**
@@ -45,6 +45,11 @@ public class AuthenticationFilter extends HttpFilter implements Filter {
 
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse res = (HttpServletResponse) response;
+		String uri = req.getRequestURI();
+		if(uri.contains("login.jsp") || uri.contains("login")) {
+			chain.doFilter(request, response);
+			return;
+		}
 		
 		HttpSession session = req.getSession(false);
 		
