@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- bean definitions here -->
+    
+    
+    <bean id = "emp"  class = "com.coforge.Beans.Employee" autowire = "byType">
+    
+<!--     	<constructor-arg name = "eid" value = "123"></constructor-arg> -->
+<!--     	<constructor-arg name = "ename" value = "Mayank"></constructor-arg> -->
+<!--     	<constructor-arg name= "dept" ref = "dept"></constructor-arg> -->
+
+			<property name="eid" value = "456" ></property>
+			<property name="ename" value = "Mayank"></property>
+    
+    </bean>
+    
+    
+<!--     <bean id = "emp1" class = "com.coforge.Beans.Employee" > -->
+    
+<!--         <constructor-arg name = "eid" value = "124"></constructor-arg> -->
+<!--     	<constructor-arg name = "ename" value = "Gaurav"></constructor-arg> -->
+<!--     	<constructor-arg name= "dept" ref="dept1"></constructor-arg> -->
+    
+<!--     </bean> -->
+    
+    <bean id = "dept" name = "dept" class = "com.coforge.Beans.Department">
+    
+        <constructor-arg name = "did" value = "1"></constructor-arg>
+    	<constructor-arg name = "dname" value = "Training"></constructor-arg>
+    	<constructor-arg name= "location" value = "Hyderabad"></constructor-arg>
+    
+    </bean>
+    
+<!--       <bean id = "dept1" class = "com.coforge.Beans.Department"> -->
+    
+<!--         <constructor-arg name = "did" value = "2"></constructor-arg> -->
+<!--     	<constructor-arg name = "dname" value = "Accounts"></constructor-arg> -->
+<!--     	<constructor-arg name= "location" value = "Hyderabad"></constructor-arg> -->
+    
+<!--     </bean> -->
+
+</beans>
