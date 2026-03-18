@@ -3,6 +3,7 @@ package com.coforge.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @ResponseBody
@@ -10,7 +11,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class HelloController {
 
 	@RequestMapping("/hello")
-	public String sayHello() {
-		return "Hello from hello controller";
+	public ModelAndView sayHello() {
+		ModelAndView mv = new ModelAndView("hello");
+		String uname = "Mayank Bhardwaj";
+		mv.addObject("uname", uname);
+		return mv;
 	}
 }
