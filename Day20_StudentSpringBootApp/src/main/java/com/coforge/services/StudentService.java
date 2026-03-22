@@ -1,5 +1,6 @@
 package com.coforge.services;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.coforge.daos.StudentDAO;
 import com.coforge.entities.Student;
+import com.coforge.exceptions.InvalidDateFormatException;
 import com.coforge.exceptions.StudentNotFoundException;
 
 @Service
@@ -23,6 +25,12 @@ public class StudentService implements StudentServiceInterace {
 	@Override
 	public Student saveStudent(Student student) {
 		
+		if(student.getDob() == null) {
+			throw new InvalidDateFormatException("Dob cant be null");
+		}
+		if(student.getDob().isAfter(LocalDate.now())) {
+			throw new InvalidDateFormatException("DOB cannot be in Future");
+		}
 		return dao.saveStudent(student);
 	}
 
@@ -31,9 +39,14 @@ public class StudentService implements StudentServiceInterace {
 	public Student updateStudent(Student student, long id) {
 		
 		Student exStudent = dao.getStudentById(id).orElseThrow(() -> new StudentNotFoundException("No Student Found with this id" +id));
+		if(student.getDob()!=null && student.getDob().isAfter(LocalDate.now())) {
+			throw new InvalidDateFormatException("DOB cannot be in future");
+		}
+		
 		exStudent.setSname(student.getSname());
 		exStudent.setCourse(student.getCourse());
 		exStudent.setAddress(student.getAddress());
+		exStudent.setDob(student.getDob());
 		return dao.saveStudent(exStudent);
 		
 	}

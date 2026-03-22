@@ -1,5 +1,9 @@
 package com.coforge.entities;
 
+import java.time.LocalDate;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -20,12 +24,22 @@ public class Student {
 	private String sname;
 	private String course;
 	private String address;
+	@JsonFormat(pattern = "yyyy-MM-dd")
+	private LocalDate dob;
 	public Student(String sname, String course, String address) {
 		super();
 		this.sname = sname;
 		this.course = course;
 		this.address = address;
 	}
+	public Student(String sname, String course, String address, LocalDate dob) {
+		super();
+		this.sname = sname;
+		this.course = course;
+		this.address = address;
+		this.dob = dob;
+	}
+	
 	
 	
 }

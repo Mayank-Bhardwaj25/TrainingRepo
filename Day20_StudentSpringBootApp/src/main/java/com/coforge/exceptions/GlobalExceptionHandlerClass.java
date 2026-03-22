@@ -17,4 +17,10 @@ public class GlobalExceptionHandlerClass {
 		return new ResponseEntity<>("Student not found", HttpStatus.NOT_FOUND);
 	}
 	
+	@ExceptionHandler(InvalidDateFormatException.class)
+	public ResponseEntity<String> handleInvalidDateFormatException(InvalidDateFormatException e) {
+		
+		return new ResponseEntity<>("Invalid Date Format", HttpStatus.BAD_REQUEST);
+	}
+	
 }
